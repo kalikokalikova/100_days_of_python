@@ -9,7 +9,6 @@ def replace_blanks(letter):
 # Create blanks for the letters
 word_so_far = ["_"] * len(random_word)
 num_of_guesses = 0
-already_guessed = []
 
 print(logo)
 print(f"The word has {len(random_word)} letters.")
@@ -18,7 +17,7 @@ print(" ".join(word_so_far))
 
 while num_of_guesses < 6 and "_" in word_so_far:
   guessed_letter = input("Guess a letter: ").lower()
-  if guessed_letter in already_guessed:
+  if guessed_letter in word_so_far:
     print("You already guessed that letter. Try again")
   elif guessed_letter in random_word:
     # replace blanks with letter in appropriate spots
@@ -27,7 +26,6 @@ while num_of_guesses < 6 and "_" in word_so_far:
   else:
     print("Sorry, that letter is not in the word. You are one step closer to death.")
     num_of_guesses +=1
-  already_guessed.append(guessed_letter)
   print(dude_so_far[num_of_guesses])
   print(" ".join(word_so_far))
   print()
