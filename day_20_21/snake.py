@@ -15,11 +15,17 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            segment = Turtle(shape="square")
-            segment.up()
-            segment.color("white")
-            segment.goto(position)
-            self.segments.append(segment)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        segment = Turtle(shape="square")
+        segment.up()
+        segment.color("white")
+        segment.goto(position)
+        self.segments.append(segment)
+
+    def grow(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         # loop backwards thru snake segments
